@@ -1,0 +1,46 @@
+/* The team wants to analyze each variable of the data collected through data summarization to get a basic understanding of*/ the dataset and to prepare for further analysis.
+/*CODE:*/
+
+setwd(choose.dir())
+getwd()
+Web_Data < read.csv("internet_dataset.csv")
+View(Web_Data)
+str(Web_Data)
+summary(Web_Data)
+
+/* As mentioned earlier, a unique page view represents the number of sessions during which that page was viewed 
+one or more times. A visit counts all instances, no matter how many times the same visitor may have been to your site. 
+So, the team needs to know whether the unique page view value depends on visits.*/
+/*CODE:*/
+
+Web_Data_AOV < aov(Visits ~ Uniquepageviews, data = Web_Data)
+summary (Web_Data_
+Alpha < 0.05
+pvalue < 1.62e 05
+Alpha > pvalue
+
+/*Find out the probable factors from the dataset, which could affect the exits. Exit Page Analysis is usually required to 
+get an idea about why a user leaves the website for a session and moves on to another one. Please keep in mind that 
+exits should not be confused with bounces.*/
+/*CODE: */
+
+Web_Exits_Data < aov( Exits ~., data = Web_Data)
+summary(Web_Exits_Data)
+
+/*Every site wants to increase the time on page for a visitor. This increases the chances of the visitor 
+understanding the site content better and hence there are more chances of a transaction taking place. 
+Find the variables which possibly have an effect on the time on page.*/
+/*CODE: */
+
+Web_Time_In_Data < aov(Timeinpage ~., data = Web_Data)
+summary(Web_Time_In_Data)
+
+/*A high bounce rate is a cause of alarm for websites which depend on visitor engagement. Help the team in 
+determining the factors that are impacting the bounce.*/
+/*CODE: */
+
+Web_Bounce_Log <
+glm(Bounces*0.01 ~.,
+family = binomial(link = 'logit'),
+data = Web_Data)
+summary(Web_Bounce_Log)
